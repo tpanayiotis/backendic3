@@ -4,7 +4,7 @@
  
  * @author Panagiotis Tamboukaris
  */
- abstract class endpoint
+ abstract class api
 {
     private $data;
     private $sql;
