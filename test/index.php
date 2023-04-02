@@ -22,6 +22,21 @@ $path = str_replace("/ic3", "", $path);
             
             $endpoint = new Base();
             break;
+            case '/events':
+                $endpoint = new Events();
+                break;
+            case '/education':
+                $endpoint = new Education();
+                break;
+            case '/delete/':
+                $endpoint = new Delete();
+                break;
+            case '/addevent':
+                $endpoint = new AddEvent();
+                break;
+            case '/editeducation':
+                $endpoint = new editeducation();
+                break;
         case '/submissions':
             $endpoint = new Submissions();
             break;
