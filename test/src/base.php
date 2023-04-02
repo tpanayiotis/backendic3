@@ -13,7 +13,7 @@ class Base extends api
 
     public function __construct() {
 
-        $db = new Database("db/contact-form.db");
+        $db = new Database("db/tpp.db");
 
            
         $name = array(

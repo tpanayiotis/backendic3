@@ -1,7 +1,7 @@
 <?php
 
 
-class Demonstrators_Text extends Endpoint
+class Demonstrators_Text extends api
 {
     protected function endpointParams()
     {

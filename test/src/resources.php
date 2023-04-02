@@ -7,7 +7,7 @@
 
 
 
-class Resources extends endpoint
+class Resources extends api
 {
 
     protected function initialiseSQL()

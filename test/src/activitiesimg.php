@@ -1,7 +1,7 @@
 <?php
 
 
-class Activitiesimg extends Endpoint
+class Activitiesimg extends api
 {
     protected function endpointParams()
     {

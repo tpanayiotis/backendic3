@@ -1,7 +1,7 @@
 <?php
 
 
-class Innovation_Text extends Endpoint
+class Innovation_Text extends api
 {
     protected function endpointParams()
     {

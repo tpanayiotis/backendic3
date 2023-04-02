@@ -1,7 +1,7 @@
 <?php
 
 
-class Activities extends endpoint
+class Activities extends api
 {
     protected function endpointParams()
     {

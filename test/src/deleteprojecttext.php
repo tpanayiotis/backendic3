@@ -1,7 +1,7 @@
 
 <?php
  
-class DeleteProjectText extends Endpoint 
+class DeleteProjectText extends api 
 {
     public function __construct() {
         $this->validateRequestMethod("POST");

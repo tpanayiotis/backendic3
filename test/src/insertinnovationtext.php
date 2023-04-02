@@ -1,5 +1,5 @@
 <?php
-class InsertInnovationText extends Endpoint 
+class InsertInnovationText extends api 
 {
     public function __construct() {
         $this->validateRequestMethod("POST");

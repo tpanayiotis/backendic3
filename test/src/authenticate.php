@@ -2,7 +2,7 @@
 
 use FirebaseJWT\JWT;
 
-class Authenticate extends Endpoint
+class Authenticate extends api
 {
     public function __construct() {
         $db = new Database("db/tpp.db");

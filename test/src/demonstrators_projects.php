@@ -1,6 +1,6 @@
 <?php
 
-class Demonstrators_Projects extends Endpoint
+class Demonstrators_Projects extends api
 {
     protected function endpointParams()
     {

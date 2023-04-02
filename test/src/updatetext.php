@@ -8,7 +8,7 @@
  * 
  * @author W20015975 Andreas Christodoulou
  */
-class UpdateText extends Endpoint 
+class UpdateText extends api 
 {
     public function __construct() {
         $this->validateRequestMethod("POST");

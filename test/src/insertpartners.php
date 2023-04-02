@@ -4,7 +4,7 @@ class InsertPartners extends api
     public function __construct() {
         $this->validateRequestMethod("POST");
         $this->validateInsertParams();
-        $db = new Database("db/contact-form.db");
+        $db = new Database("db/tpp.db");
         $this->initialiseSQL();
         $queryResult = $db->executeSQL($this->getSQL(), $this->getSQLParams());
         // No need to set status code

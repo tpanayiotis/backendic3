@@ -1,6 +1,6 @@
 <?php
 
-class Innovation_Projects extends Endpoint
+class Innovation_Projects extends api
 {
     protected function endpointParams()
     {

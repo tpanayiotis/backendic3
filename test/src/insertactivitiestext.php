@@ -1,5 +1,5 @@
 <?php
-class InsertActivitiesText extends Endpoint 
+class InsertActivitiesText extends api 
 {
     public function __construct() {
         $this->validateRequestMethod("POST");

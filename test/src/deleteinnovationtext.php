@@ -1,6 +1,6 @@
 <?php
  
-class DeleteInnovationText extends Endpoint 
+class DeleteInnovationText extends api 
 {
     public function __construct() {
         $this->validateRequestMethod("POST");

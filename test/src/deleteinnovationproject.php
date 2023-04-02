@@ -1,6 +1,5 @@
-
 <?php
-class DeleteInnovationProject extends Endpoint 
+class DeleteInnovationProject extends api 
 {
     public function __construct() {
         $this->validateRequestMethod("POST");
@@ -34,13 +33,6 @@ class DeleteInnovationProject extends Endpoint
   
         // 2. Check to see if a valid project ID is supplied 
         // (this can be done by checking if the ID exists in the Projects table)
-        $db = new Database("db/tpp.db");
-        $id = $_POST['id'];
-        $sql = "SELECT id FROM Projects WHERE id = :id";
-        $queryResult = $db->executeSQL($sql, ['id' => $id]);
-        if (empty($queryResult)) {
-            throw new ClientError("Invalid Project ID", 400);
-        }
     }
 
     protected function initialiseSQL() {

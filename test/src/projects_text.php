@@ -1,7 +1,7 @@
 <?php
 
 
-class Projects_Text extends Endpoint
+class Projects_Text extends api
 {
     protected function endpointParams()
     {

@@ -1,7 +1,7 @@
 <?php
 use FirebaseJWT\JWT;
 
-class dashboard extends Endpoint
+class dashboard extends api
 {
     protected function authenticate() {
         // Require authentication
@@ -20,6 +20,8 @@ class dashboard extends Endpoint
         }
     }
     protected function initialiseSQL() {
+        $sqlParams = array();
+
         $sql = "SELECT DISTINCT account_id,username,password,name,email,user_type,status
          FROM account";
             
@@ -51,4 +53,4 @@ class dashboard extends Endpoint
         protected function endpointParams() {
         return ['account_id'];
         }
-    }      
+    } 

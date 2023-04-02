@@ -8,7 +8,7 @@
  * 
  * @author W20015975 Andreas Christodoulou
  */
-class UpdateActivitiesImg extends Endpoint 
+class UpdateActivitiesImg extends api 
 {
     public function __construct() {
         $this->validateRequestMethod("POST");

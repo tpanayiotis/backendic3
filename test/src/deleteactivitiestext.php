@@ -1,7 +1,7 @@
 
 <?php
  
-class DeleteActivitiesText extends Endpoint 
+class DeleteActivitiesText extends api 
 {
     public function __construct() {
         $this->validateRequestMethod("POST");
