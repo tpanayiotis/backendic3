@@ -55,22 +55,12 @@ private function validateToken() {
 
     // retrieve the form data
     $account_id = $_POST['account_id'];
-    $username = $_POST['username'];
     $password = $_POST['password'];
-    $email = $_POST['email'];
-    $name = $_POST['name'];
-    $status = $_POST['status'];
-    $user_type = $_POST['user_type'];
-    
    
     //hash password
     $encryptedPassword = password_hash($password, PASSWORD_DEFAULT);
     // update the existing user in the database
-    $stmt = $db->prepare('UPDATE account SET username=:username, email=:email, name=:name, status=:status, user_type=:user_type WHERE account_id=:account_id');
+    $stmt = $db->prepare('UPDATE account SET  password=:password WHERE account_id=:account_id');
     $stmt->bindParam(':account_id', $account_id);
-    $stmt->bindParam(':username', $username);
-    $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':name', $name);
-    $stmt->bindParam(':status', $status);
-    $stmt->bindParam(':user_type', $user_type);
+    $stmt->bindParam(':password', $encryptedPassword);
     $stmt->execute();
