@@ -146,6 +146,15 @@ $path = str_replace("/ic3", "", $path);
                                                                                              case'/updateinnovationtext':
                                                                                                 $endpoint = new UpdateInnovationText();
                                                                                                    break;
+                                                                                                   case '/api/resources/':
+                                                                                                    case '/api/resources':
+                                                                                                        $endpoint = new Resources();
+                                                                                                        break;
+                                                                                                        case'/dashboard':
+                                                                                                            $endpoint = new dashboard();
+                                                                                                               break;case'/auth':
+                                                                                                                $endpoint = new Authenticate();
+                                                                                                                   break;
         default:
         $endpoint = new ClientError("Path not found: " . $path, 404);
           
