@@ -161,15 +161,75 @@ $path = str_replace("/ic3", "", $path);
                                                                                              case'/updateinnovationtext':
                                                                                                 $endpoint = new UpdateInnovationText();
                                                                                                    break;
-                                                                                                   case '/api/resources/':
-                                                                                                    case '/api/resources':
-                                                                                                        $endpoint = new Resources();
-                                                                                                        break;
                                                                                                         case'/dashboard':
                                                                                                             $endpoint = new dashboard();
                                                                                                                break;case'/auth':
                                                                                                                 $endpoint = new Authenticate();
                                                                                                                    break;
+      case '/api/resources/':
+    case '/api/resources':
+        $endpoint = new Resources($request, $response);
+        break;
+    case '/api/resources/category-text/':
+    case '/api/resources/category-text':
+        $endpoint = new CategoryText($request, $response);
+        break;
+    case '/api/resources/news-and-insights/':
+    case '/api/resources/news-and-insights':
+        $endpoint = new NewsAndInsights($request, $response);
+        break;
+    case '/api/resources/relevant-news-stories/':
+    case '/api/resources/relevant-news-stories':
+        $endpoint = new RelevantNewsStories($request, $response);
+        break;
+    case '/api/resources/industry-reports/':
+    case '/api/resources/industry-reports':
+        $endpoint = new IndustryReports($request, $response);
+        break;
+    case '/api/community&network/':
+    case '/api/community&network':
+        $endpoint = new CommunityNetwork($request, $response);
+        break;
+    case '/api/resources/category-text/add/':
+    case '/api/resources/category-text/add':
+        $endpoint = new CategoryTextAdd($request, $response);
+        break;
+    case '/api/resources/news-and-insights/add/':
+    case '/api/resources/news-and-insights/add':
+        $endpoint = new NewsAndInsightsAdd($request, $response);
+        break;
+    case '/api/resources/relevant-news-stories/add/':
+    case '/api/resources/relevant-news-stories/add':
+        $endpoint = new RelevantNewsStoriesAdd($request, $response);
+        break;
+    case '/api/resources/industry-reports/add/':
+    case '/api/resources/industry-reports/add':
+        $endpoint = new IndustryReportsAdd($request, $response);
+        break;
+    case '/api/community&network/add/':
+    case '/api/community&network/add':
+        $endpoint = new CommunityNetworkAdd($request, $response);
+        break;
+    case '/api/resources/category-text/delete/':
+    case '/api/resources/category-text/delete':
+        $endpoint = new CategoryTextDelete($request, $response);
+        break;
+    case '/api/resources/news-and-insights/delete/':
+    case '/api/resources/news-and-insights/delete':
+        $endpoint = new NewsAndInsightsDelete($request, $response);
+        break;
+    case '/api/resources/relevant-news-stories/delete/':
+    case '/api/resources/relevant-news-stories/delete':
+        $endpoint = new RelevantNewsStoriesDelete($request, $response);
+        break;
+    case '/api/resources/industry-reports/delete/':
+    case '/api/resources/industry-reports/delete':
+        $endpoint = new IndustryReportsDelete($request, $response);
+        break;
+    case '/api/community&network/delete/':
+    case '/api/community&network/delete':
+        $endpoint = new CommunityNetworkDelete($request, $response);
+        break;
         default:
         $endpoint = new ClientError("Path not found: " . $path, 404);
           
