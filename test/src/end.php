@@ -11,7 +11,7 @@
  * 
  * @author Alexantros Tamboutsiaris W20001556
  */
-abstract class Endpoint
+abstract class End
 {
     private $data;
     private $sql;
