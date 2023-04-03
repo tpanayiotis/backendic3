@@ -1,47 +1,55 @@
 <?php
 
-class RelevantNewsStoriesDelete extends api
+class RelevantNewsStoriesDelete extends End
 {
     public function __construct()
     {
-        $this->validateRequestMethod("POST");
-        $this->validateDeleteParams();
         $db = new Database("db/tpp.db");
+
+        // Check the request method is POST
+        $this->validateRequestMethod("POST");
+
+        // Initialise and execute the SQL statement 
         $this->initialiseSQL();
         $queryResult = $db->executeSQL($this->getSQL(), $this->getSQLParams());
-        // No need to set status code
-        // Return a success message
+
         $this->setData(array(
             "length" => 0,
-            "message" => "Success",
+            "message" => "Success. Item deleted successfully.",
             "data" => null
         ));
-    }
-    private function validateRequestMethod($method)
-    {
-        if ($_SERVER['REQUEST_METHOD'] != $method) {
-            throw new ClientError("Invalid Request Method", 405);
-        }
-    }
-
-    private function validateDeleteParams()
-    {
-        if (!filter_has_var(INPUT_POST, 'relevant_id')) {
-            throw new ClientError("ID parameter required", 400);
-        }
-        // Add any other validation for required parameters
     }
 
     protected function initialiseSQL()
     {
-        $relevant_id = $_POST['relevant_id'];
-
         $sql = "DELETE FROM relevant
-                WHERE relevant_id = :relevant_id";
+                WHERE 'true' = 'true'";
 
-        $this->setSQL($sql);
-        $this->setSQLParams([
-            'relevant_id' => $relevant_id
-        ]);
+        $sqlParams = array();
+
+        $bool = true;
+
+        // Relevant ID parameter
+        if (filter_has_var(INPUT_GET, 'relevant_id')) {
+            $sql .= " AND relevant_id = :relevant_id";
+            $sqlParams[':relevant_id'] = $_GET['relevant_id'];
+
+            $param = 'relevant_id';
+            $name = "Relevant ID";
+
+            // Function that checks the correctness of the Relevant ID
+            SwitchStatementForIntegers($param, $name);
+        }
+
+        // if the parameter that the user inserts is OK, then set the SQL and the parameters
+        if ($bool) {
+            $this->setSQL($sql);
+            $this->setSQLParams($sqlParams);
+        }
+    }
+
+    protected function endpointParams()
+    {
+        return ['relevant_id'];
     }
 }
