@@ -19,7 +19,7 @@ class CommunityNetworkAdd extends api
 
     private function validateInsertParams()
     {
-        if (!filter_has_var(INPUT_POST, 'text')) {
+        if (!filter_has_var(INPUT_POST, 'main_text')) {
             throw new ClientError("Text parameter required", 400);
         }
         // Add any other validation for required parameters

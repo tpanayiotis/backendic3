@@ -34,14 +34,16 @@ class NewsAndInsightsDelete extends api
 
     protected function initialiseSQL()
     {
-        $news_id = $_POST['news_id'];
-
         $sql = "DELETE FROM news
                 WHERE 'true' = 'true'";
 
+        // News ID parameter
+        if (filter_has_var(INPUT_GET, 'news_id')) {
+            $sql .= " AND news_id = :news_id";
+            $sqlParams[':news_id'] = $_GET['news_id'];
+        }
+
         $this->setSQL($sql);
-        $this->setSQLParams([
-            'news_id' => $news_id
-        ]);
+        $this->setSQLParams($sqlParams);
     }
 }

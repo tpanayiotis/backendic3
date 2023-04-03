@@ -37,7 +37,7 @@ class CommunityNetworkDelete extends api
         $main_id = $_POST['main_id'];
 
         $sql = "DELETE FROM main
-                WHERE 'true' = 'true'";
+                WHERE main_id = :main_id";
 
         $this->setSQL($sql);
         $this->setSQLParams([

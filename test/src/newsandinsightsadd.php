@@ -19,7 +19,25 @@ class NewsAndInsightsAdd extends api
 
     private function validateInsertParams()
     {
-        if (!filter_has_var(INPUT_POST, 'text')) {
+        if (!filter_has_var(INPUT_POST, 'news_title')) {
+            throw new ClientError("Text parameter required", 400);
+        }
+        if (!filter_has_var(INPUT_POST, 'news_content')) {
+            throw new ClientError("Text parameter required", 400);
+        }
+        if (!filter_has_var(INPUT_POST, 'news_Img_url')) {
+            throw new ClientError("Text parameter required", 400);
+        }
+        if (!filter_has_var(INPUT_POST, 'article_title')) {
+            throw new ClientError("Text parameter required", 400);
+        }
+        if (!filter_has_var(INPUT_POST, 'article_content')) {
+            throw new ClientError("Text parameter required", 400);
+        }
+        if (!filter_has_var(INPUT_POST, 'article_Img_url')) {
+            throw new ClientError("Text parameter required", 400);
+        }
+        if (!filter_has_var(INPUT_POST, 'date_published')) {
             throw new ClientError("Text parameter required", 400);
         }
         // Add any other validation for required parameters

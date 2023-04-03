@@ -37,7 +37,7 @@ class IndustryReportsDelete extends api
         $industry_id = $_POST['industry_id'];
 
         $sql = "DELETE FROM industry
-                WHERE 'true' = 'true'";
+                WHERE industry_id = :industry_id";
 
         $this->setSQL($sql);
         $this->setSQLParams([

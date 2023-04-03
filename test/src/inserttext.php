@@ -18,7 +18,7 @@ class InsertText extends api
 
       private function validateInsertParams() {
         if (!filter_has_var(INPUT_POST,'description')) {
-          throw new ClientErrorException("Picture url parameter required", 400);
+          throw new ClientErrorException("Description parameter required", 400);
         }
         
         // Add any other validation for required parameters
@@ -34,11 +34,10 @@ class InsertText extends api
      
 
         // Add any other parameters required for the insert statement
-        $sql = "INSERT INTO about (id, description) VALUES (:description)";
+        $sql = "INSERT INTO about (description) VALUES (:description)";
         $this->setSQL($sql);
         $this->setSQLParams([
-            'id' => $id,
-          'description' => $description,
+          'description' => $description
           
       
         ]);

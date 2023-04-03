@@ -1,5 +1,5 @@
 <?php
-class CategoryTextAdd extends endpoint
+class CategoryTextAdd extends api
 {
     public function __construct()
     {
@@ -40,7 +40,7 @@ class CategoryTextAdd extends endpoint
         $sql = "INSERT INTO category_text (cat_text) VALUES (:cat_text)";
         $this->setSQL($sql);
         $this->setSQLParams([
-            'category_text' => $category_text
+            'cat_text' => $cat_text
 
 
         ]);

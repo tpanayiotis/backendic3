@@ -37,7 +37,7 @@ class CategoryTextDelete extends api
         $cat_text_id = $_POST['cat_text_id'];
 
         $sql = "DELETE FROM category_text
-                WHERE 'true' = 'true'";
+                WHERE cat_text_id = :cat_text_id";
 
         $this->setSQL($sql);
         $this->setSQLParams([

@@ -37,11 +37,11 @@ class RelevantNewsStoriesDelete extends api
         $relevant_id = $_POST['relevant_id'];
 
         $sql = "DELETE FROM relevant
-                WHERE 'true' = 'true'";
+                WHERE relevant_id = :relevant_id";
 
         $this->setSQL($sql);
         $this->setSQLParams([
-            'cat_text_id' => $relevant_id
+            'relevant_id' => $relevant_id
         ]);
     }
 }

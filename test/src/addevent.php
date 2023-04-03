@@ -6,7 +6,7 @@
  */
 
 //text,links
-class AddEvent extends Endpoint
+class AddEvent extends api
 {
     public function __construct()
     {

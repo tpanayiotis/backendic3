@@ -4,8 +4,7 @@ header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Origin: *");
 
 // connect to the database
-$db = new PDO('sqlite: ic3/db/tpp.db');
-
+$db = new PDO('sqlite:ic3/db/tpp.db');
 // retrieve the form data
 $username = $_POST['username'];
 $password = $_POST['password'];

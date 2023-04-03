@@ -19,7 +19,13 @@ class IndustryReportsAdd extends api
 
     private function validateInsertParams()
     {
-        if (!filter_has_var(INPUT_POST, 'text')) {
+        if (!filter_has_var(INPUT_POST, 'industry_title')) {
+            throw new ClientError("Text parameter required", 400);
+        }
+        if (!filter_has_var(INPUT_POST, 'industry_Img_url')) {
+            throw new ClientError("Text parameter required", 400);
+        }
+        if (!filter_has_var(INPUT_POST, 'article_url')) {
             throw new ClientError("Text parameter required", 400);
         }
         // Add any other validation for required parameters

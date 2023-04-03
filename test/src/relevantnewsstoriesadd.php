@@ -19,7 +19,19 @@ class RelevantNewsStoriesAdd extends api
 
     private function validateInsertParams()
     {
-        if (!filter_has_var(INPUT_POST, 'text')) {
+        if (!filter_has_var(INPUT_POST, 'relevant_title')) {
+            throw new ClientError("Text parameter required", 400);
+        }
+        if (!filter_has_var(INPUT_POST, 'relevant_content')) {
+            throw new ClientError("Text parameter required", 400);
+        }
+        if (!filter_has_var(INPUT_POST, 'relevant_Img_url')) {
+            throw new ClientError("Text parameter required", 400);
+        }
+        if (!filter_has_var(INPUT_POST, 'article_url')) {
+            throw new ClientError("Text parameter required", 400);
+        }
+        if (!filter_has_var(INPUT_POST, 'date_published')) {
             throw new ClientError("Text parameter required", 400);
         }
         // Add any other validation for required parameters

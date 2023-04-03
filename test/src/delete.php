@@ -37,7 +37,12 @@ class Delete extends api
             $this->setSQLParams($sqlParams);
         }
     }
-
+    protected function validateRequestMethod($method)
+{
+    if ($_SERVER['REQUEST_METHOD'] != $method) {
+        throw new ClientErrorException("Invalid request method: " . $_SERVER['REQUEST_METHOD'], 405);
+    }
+}
     protected function endpointParams()
     {
         return ['id'];
