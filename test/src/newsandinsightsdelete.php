@@ -4,7 +4,7 @@
  * 
  * @author Alexantros Tamboutsiaris W20001556
  */
-class NewsAndInsightsDelete extends Endpoint
+class NewsAndInsightsDelete extends End
 {
     public function __construct()
     {
