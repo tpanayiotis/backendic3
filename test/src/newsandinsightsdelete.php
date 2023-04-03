@@ -1,35 +1,27 @@
 <?php
 
-class NewsAndInsightsDelete extends api
+/** 
+ * 
+ * @author Alexantros Tamboutsiaris W20001556
+ */
+class NewsAndInsightsDelete extends Endpoint
 {
     public function __construct()
     {
-        $this->validateRequestMethod("POST");
-        $this->validateDeleteParams();
         $db = new Database("db/tpp.db");
+
+        // Check the request method is POST
+        $this->validateRequestMethod("POST");
+
+        // Initialise and execute the SQL statement 
         $this->initialiseSQL();
         $queryResult = $db->executeSQL($this->getSQL(), $this->getSQLParams());
-        // No need to set status code
-        // Return a success message
+
         $this->setData(array(
             "length" => 0,
-            "message" => "Success",
+            "message" => "Success. Item deleted successfully.",
             "data" => null
         ));
-    }
-    private function validateRequestMethod($method)
-    {
-        if ($_SERVER['REQUEST_METHOD'] != $method) {
-            throw new ClientError("Invalid Request Method", 405);
-        }
-    }
-
-    private function validateDeleteParams()
-    {
-        if (!filter_has_var(INPUT_POST, 'news_id')) {
-            throw new ClientError("ID parameter required", 400);
-        }
-        // Add any other validation for required parameters
     }
 
     protected function initialiseSQL()
@@ -37,13 +29,31 @@ class NewsAndInsightsDelete extends api
         $sql = "DELETE FROM news
                 WHERE 'true' = 'true'";
 
+        $sqlParams = array();
+
+        $bool = true;
+
         // News ID parameter
         if (filter_has_var(INPUT_GET, 'news_id')) {
             $sql .= " AND news_id = :news_id";
             $sqlParams[':news_id'] = $_GET['news_id'];
+
+            $param = 'news_id';
+            $name = "News ID";
+
+            // Function that checks the correctness of the News ID
+            SwitchStatementForIntegers($param, $name);
         }
 
-        $this->setSQL($sql);
-        $this->setSQLParams($sqlParams);
+        // if the parameter that the user inserts is OK, then set the SQL and the parameters
+        if ($bool) {
+            $this->setSQL($sql);
+            $this->setSQLParams($sqlParams);
+        }
+    }
+
+    protected function endpointParams()
+    {
+        return ['news_id'];
     }
 }
