@@ -6,6 +6,7 @@
  if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {    
      exit(0);
  } 
+define('SECRETKEY',"Kcdp3ETZ5MD8,Q}jy(RdGsb1E8S(K3");
 //autoloader function was included
 include 'src/autoloader.php';
 spl_autoload_register('autoloader');
