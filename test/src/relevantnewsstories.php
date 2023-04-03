@@ -1,14 +1,15 @@
 <?php
 
-class Resources extends api
+
+class RelevantNewsStories extends api
 {
     protected function endpointParams()
     {
-        return ['cat_id', 'cat_title', 'path_title', 'cat_Img_url'];
+        return ['relevant_id', 'relevant_title', 'relevant_content', 'relevant_Img_url', 'article_url', 'date_published'];
     }
     protected function initialiseSQL()
     {
-        $sql = "SELECT DISTINCT  * FROM category
+        $sql = "SELECT DISTINCT  * FROM relevant
                 WHERE 'true' = 'true'";
 
         $sqlParams = array();
@@ -16,11 +17,11 @@ class Resources extends api
          * check if author_id is set in request and if it's a valid integer
          */
         // check if id is set in request and if it's a valid integer
-        if (isset($_GET['cat_id'])) {
-            $cat_id = filter_input(INPUT_GET, 'cat_id', FILTER_VALIDATE_INT);
-            if ($cat_id !== false) {
-                $sql .= " AND cat_id = :cat_id";
-                $sqlParams[':cat_id'] = $cat_id;
+        if (isset($_GET['relevant_id'])) {
+            $relevant_id = filter_input(INPUT_GET, 'relevant_id', FILTER_VALIDATE_INT);
+            if ($relevant_id !== false) {
+                $sql .= " AND relevant_id = :relevant_id";
+                $sqlParams[':relevant_id'] = $relevant_id;
             } else {
                 throw new ClientError("The id must be a valid integer", 400);
             }
