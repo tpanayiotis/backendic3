@@ -1,47 +1,55 @@
 <?php
 
-class IndustryReportsDelete extends api
+class IndustryReportsDelete extends End
 {
     public function __construct()
     {
-        $this->validateRequestMethod("POST");
-        $this->validateDeleteParams();
         $db = new Database("db/tpp.db");
+
+        // Check the request method is POST
+        $this->validateRequestMethod("POST");
+
+        // Initialise and execute the SQL statement 
         $this->initialiseSQL();
         $queryResult = $db->executeSQL($this->getSQL(), $this->getSQLParams());
-        // No need to set status code
-        // Return a success message
+
         $this->setData(array(
             "length" => 0,
-            "message" => "Success",
+            "message" => "Success. Item deleted successfully.",
             "data" => null
         ));
-    }
-    private function validateRequestMethod($method)
-    {
-        if ($_SERVER['REQUEST_METHOD'] != $method) {
-            throw new ClientError("Invalid Request Method", 405);
-        }
-    }
-
-    private function validateDeleteParams()
-    {
-        if (!filter_has_var(INPUT_POST, 'industry_id')) {
-            throw new ClientError("ID parameter required", 400);
-        }
-        // Add any other validation for required parameters
     }
 
     protected function initialiseSQL()
     {
-        $industry_id = $_POST['industry_id'];
-
         $sql = "DELETE FROM industry
-                WHERE industry_id = :industry_id";
+                WHERE 'true' = 'true'";
 
-        $this->setSQL($sql);
-        $this->setSQLParams([
-            'industry_id' => $industry_id
-        ]);
+        $sqlParams = array();
+
+        $bool = true;
+
+        // Industry ID parameter
+        if (filter_has_var(INPUT_GET, 'industry_id')) {
+            $sql .= " AND industry_id = :industry_id";
+            $sqlParams[':industry_id'] = $_GET['industry_id'];
+
+            $param = 'industry_id';
+            $name = "Industry ID";
+
+            // Function that checks the correctness of the Industry ID
+            SwitchStatementForIntegers($param, $name);
+        }
+
+        // if the parameter that the user inserts is OK, then set the SQL and the parameters
+        if ($bool) {
+            $this->setSQL($sql);
+            $this->setSQLParams($sqlParams);
+        }
+    }
+
+    protected function endpointParams()
+    {
+        return ['industry_id'];
     }
 }
