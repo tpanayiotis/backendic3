@@ -167,69 +167,70 @@ $path = str_replace("/ic3", "", $path);
                                                                                                                break;case'/auth':
                                                                                                                 $endpoint = new Authenticate();
                                                                                                                    break;
-      case '/api/resources/':
+      //--Alexantros---
+    case '/api/resources/':
     case '/api/resources':
-        $endpoint = new Resources($request, $response);
+        $endpoint = new Resources();
         break;
     case '/api/resources/category-text/':
     case '/api/resources/category-text':
-        $endpoint = new CategoryText($request, $response);
+        $endpoint = new CategoryText();
         break;
     case '/api/resources/news-and-insights/':
     case '/api/resources/news-and-insights':
-        $endpoint = new NewsAndInsights($request, $response);
+        $endpoint = new NewsAndInsights();
         break;
     case '/api/resources/relevant-news-stories/':
     case '/api/resources/relevant-news-stories':
-        $endpoint = new RelevantNewsStories($request, $response);
+        $endpoint = new RelevantNewsStories();
         break;
     case '/api/resources/industry-reports/':
     case '/api/resources/industry-reports':
-        $endpoint = new IndustryReports($request, $response);
+        $endpoint = new IndustryReports();
         break;
     case '/api/community&network/':
     case '/api/community&network':
-        $endpoint = new CommunityNetwork($request, $response);
+        $endpoint = new CommunityNetwork();
         break;
     case '/api/resources/category-text/add/':
     case '/api/resources/category-text/add':
-        $endpoint = new CategoryTextAdd($request, $response);
+        $endpoint = new CategoryTextAdd();
         break;
     case '/api/resources/news-and-insights/add/':
     case '/api/resources/news-and-insights/add':
-        $endpoint = new NewsAndInsightsAdd($request, $response);
+        $endpoint = new NewsAndInsightsAdd();
         break;
     case '/api/resources/relevant-news-stories/add/':
     case '/api/resources/relevant-news-stories/add':
-        $endpoint = new RelevantNewsStoriesAdd($request, $response);
+        $endpoint = new RelevantNewsStoriesAdd();
         break;
     case '/api/resources/industry-reports/add/':
     case '/api/resources/industry-reports/add':
-        $endpoint = new IndustryReportsAdd($request, $response);
+        $endpoint = new IndustryReportsAdd();
         break;
     case '/api/community&network/add/':
     case '/api/community&network/add':
-        $endpoint = new CommunityNetworkAdd($request, $response);
+        $endpoint = new CommunityNetworkAdd();
         break;
     case '/api/resources/category-text/delete/':
     case '/api/resources/category-text/delete':
-        $endpoint = new CategoryTextDelete($request, $response);
+        $endpoint = new CategoryTextDelete();
         break;
     case '/api/resources/news-and-insights/delete/':
     case '/api/resources/news-and-insights/delete':
-        $endpoint = new NewsAndInsightsDelete($request, $response);
+        $endpoint = new NewsAndInsightsDelete();
         break;
     case '/api/resources/relevant-news-stories/delete/':
     case '/api/resources/relevant-news-stories/delete':
-        $endpoint = new RelevantNewsStoriesDelete($request, $response);
+        $endpoint = new RelevantNewsStoriesDelete();
         break;
     case '/api/resources/industry-reports/delete/':
     case '/api/resources/industry-reports/delete':
-        $endpoint = new IndustryReportsDelete($request, $response);
+        $endpoint = new IndustryReportsDelete();
         break;
     case '/api/community&network/delete/':
     case '/api/community&network/delete':
-        $endpoint = new CommunityNetworkDelete($request, $response);
+        $endpoint = new CommunityNetworkDelete();
         break;
         default:
         $endpoint = new ClientError("Path not found: " . $path, 404);
